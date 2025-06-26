@@ -1,0 +1,324 @@
+/* Variables CSS para colores */
+:root {
+    --yellow-bg: #FFEB00;
+    --blue-text: #002266;
+    --blue-bg: #002266;
+    --orange-bg: #FF7F00;
+    --pink-button: #FF007F;
+    --white-text: #FFFFFF;
+}
+
+/* Reset básico y fuente */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Usamos Roboto, similar a la imagen */
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Oculta barras de scroll si no son necesarias para las secciones completas */
+}
+
+.page-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden; /* Para el efecto de slider */
+}
+
+.section-slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.5s ease-in-out; /* Animación para el deslizamiento */
+    transform: translateX(100%); /* Oculta todas las slides por defecto */
+}
+
+.section-slide.active-slide {
+    transform: translateX(0); /* Muestra la slide activa */
+}
+
+/* Estilos para la primera sección (amarilla) */
+.yellow-section {
+    background-color: var(--yellow-bg);
+    color: var(--blue-text);
+    z-index: 1; /* Asegura que esté por encima de otras secciones al cargar */
+}
+
+.yellow-section .content-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+    padding: 20px;
+}
+
+.yellow-section .main-title {
+    font-size: 15vw; /* Tamaño de fuente responsivo */
+    font-weight: 900;
+    line-height: 0.8; /* Ajusta el interlineado */
+    text-transform: uppercase;
+}
+
+.yellow-section .subtitle {
+    font-size: 3.5vw;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.yellow-section .description {
+    font-size: 1.8vw;
+    margin-top: 20px;
+    max-width: 80%;
+    line-height: 1.4;
+}
+
+.yellow-section .image-wrapper.main-character {
+    width: 40vw; /* Ajusta el tamaño del personaje */
+    max-width: 450px; /* Tamaño máximo para el personaje */
+    margin-top: 40px;
+}
+
+.yellow-section .image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Estilos para la segunda sección (azul y naranja) */
+.orange-blue-section {
+    z-index: 0; /* Por debajo de la primera al principio */
+}
+
+.orange-blue-section .content-area.split-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0; /* Elimina padding para que los panes se peguen a los bordes */
+}
+
+.orange-blue-section .text-pane {
+    background-color: var(--blue-bg);
+    color: var(--white-text);
+    flex: 1; /* Ocupa el espacio disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Alinear texto a la izquierda */
+    padding: 0 8vw; /* Padding lateral */
+    text-align: left;
+}
+
+.orange-blue-section .image-pane {
+    background-color: var(--orange-bg);
+    flex: 1; /* Ocupa el espacio disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Padding alrededor de la imagen */
+}
+
+.orange-blue-section .image-pane img {
+    width: 80%; /* Ajusta el tamaño de la imagen dentro de su panel */
+    max-width: 600px;
+    height: auto;
+    display: block;
+}
+
+.orange-blue-section .section-title {
+    font-size: 4.5vw;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.orange-blue-section .section-title .highlight {
+    color: var(--orange-bg); /* Resalta la palabra en naranja */
+}
+
+.orange-blue-section .section-description {
+    font-size: 2vw;
+    line-height: 1.5;
+    max-width: 90%;
+}
+
+/* Estilos comunes para los botones */
+.button-wrapper {
+    position: absolute; /* Para posicionar el botón de forma independiente */
+    bottom: 5vh; /* Ajusta la posición desde abajo */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10; /* Asegura que el botón esté por encima de otros elementos */
+}
+
+.main-button {
+    background-color: var(--pink-button);
+    color: var(--white-text);
+    padding: 1.8vw 4.5vw; /* Padding responsivo */
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 2vw; /* Tamaño de fuente responsivo */
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Evita que el texto del botón se rompa */
+}
+
+.main-button:hover {
+    background-color: #d1006a; /* Un tono más oscuro al pasar el mouse */
+}
+
+/* Botón inferior en la segunda sección */
+.button-wrapper.button-bottom {
+    bottom: 5vh; /* Posición específica para esta sección */
+}
+
+/* Estilos para las flechas de navegación */
+.navigation-arrows {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none; /* Permite hacer clic a través de ellas si el contenido está detrás */
+    z-index: 20; /* Asegura que las flechas estén encima de todo */
+}
+
+.arrow {
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente */
+    color: var(--white-text);
+    border: none;
+    padding: 15px 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    pointer-events: all; /* Hace que las flechas sean clickeables */
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Tamaño fijo para la flecha */
+    height: 50px;
+    text-align: center;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 1024px) {
+    .yellow-section .main-title {
+        font-size: 20vw;
+    }
+    .yellow-section .subtitle {
+        font-size: 4.5vw;
+    }
+    .yellow-section .description {
+        font-size: 2.5vw;
+    }
+    .main-button {
+        padding: 2.5vw 6vw;
+        font-size: 2.5vw;
+    }
+    .orange-blue-section .section-title {
+        font-size: 6vw;
+    }
+    .orange-blue-section .section-description {
+        font-size: 2.8vw;
+    }
+    .orange-blue-section .text-pane,
+    .orange-blue-section .image-pane {
+        padding: 0 5vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .yellow-section .main-title {
+        font-size: 25vw;
+    }
+    .yellow-section .subtitle {
+        font-size: 6vw;
+    }
+    .yellow-section .description {
+        font-size: 3.5vw;
+    }
+    .yellow-section .image-wrapper.main-character {
+        width: 60vw;
+    }
+    .main-button {
+        padding: 3vw 8vw;
+        font-size: 3.5vw;
+    }
+
+    .orange-blue-section .content-area.split-content {
+        flex-direction: column; /* Apila las secciones en móvil */
+    }
+    .orange-blue-section .text-pane,
+    .orange-blue-section .image-pane {
+        width: 100%;
+        height: 50vh; /* Cada panel ocupa la mitad de la altura de la vista */
+        text-align: center; /* Centra el texto */
+        padding: 40px 30px;
+    }
+    .orange-blue-section .text-pane {
+        align-items: center; /* Centra el texto en el panel */
+    }
+    .orange-blue-section .section-title {
+        font-size: 8vw;
+    }
+    .orange-blue-section .section-description {
+        font-size: 4.5vw;
+    }
+    .navigation-arrows {
+        padding: 0 10px;
+    }
+    .arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        padding: 0; /* Elimina padding para ajustar al tamaño fijo */
+    }
+
+    .button-wrapper {
+        bottom: 20px; /* Ajusta la posición del botón inferior en móvil */
+    }
+}
+
+@media (max-width: 480px) {
+    .yellow-section .main-title {
+        font-size: 30vw;
+    }
+    .yellow-section .subtitle {
+        font-size: 8vw;
+    }
+    .yellow-section .description {
+        font-size: 4.5vw;
+    }
+    .yellow-section .image-wrapper.main-character {
+        width: 70vw;
+    }
+    .main-button {
+        font-size: 4.5vw;
+        padding: 4vw 10vw;
+    }
+    .orange-blue-section .section-title {
+        font-size: 10vw;
+    }
+    .orange-blue-section .section-description {
+        font-size: 5.5vw;
+    }
+}
